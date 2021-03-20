@@ -10,7 +10,8 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int currentIndex = 0;
-  void onIndexChanged(int index) {
+
+  void onIndexChange(int index) {
     setState(() {
       currentIndex = index;
     });
@@ -22,29 +23,49 @@ class _MainScreenState extends State<MainScreen> {
       drawer: Drawer(
         child: ListView(
           children: [
-            //UserAccountsDrawerHeader(
-            //currentAccountPicture: CircleAvatar(
-            // backgroundImage: NetworkImage(
-            //     "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Gatto_europeo4.jpg/800px-Gatto_europeo4.jpg"),
-            // ),
-            //  accountName: Text("Pisut Punsombut"),
-            // accountEmail: Text("61223224@cmru.ac.th"),
+            // UserAccountsDrawerHeader(
+            //   currentAccountPicture: CircleAvatar(
+            //     backgroundImage: NetworkImage("https://miro.medium.com/max/11400/1*lS9ZqdEGZrRiTcL1JUgt9w.jpeg"),
+            //   ),
+            //   accountName: Text("Bundit Nuntates"),
+            //   accountEmail: Text("silkyland@gmail.com"),
             // ),
             DrawerHeader(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        "https:www.templatemonster.com/blog/wp-content/uploads/2016/04/1-9-2.jpg"),
-                    fit: BoxFit.cover,
+              margin: EdgeInsets.zero,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                    "https://i.pinimg.com/736x/ff/92/68/ff92685e660a2d347736f44cc7a11d38.jpg",
                   ),
+                  fit: BoxFit.cover,
                 ),
-                child: Center(
-                    child: Column(
-                  children: [CircleAvatar(), Text("ชื่อวัด")],
-                ))),
+              ),
+              child: Center(
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          "https://miro.medium.com/max/11400/1*lS9ZqdEGZrRiTcL1JUgt9w.jpeg"),
+                    ),
+                    Text("ชื่อวัด"),
+                  ],
+                ),
+              ),
+            ),
             ListTile(
+              onTap: () {
+                Navigator.pushNamed(context, '/history');
+              },
               leading: Icon(Icons.people),
-              title: Text("Profile"),
+              title: Text("ประวัติ"),
+            ),
+            ListTile(
+              leading: Icon(Icons.add_photo_alternate_outlined),
+              title: Text("ทดสอบ"),
+            ),
+            ListTile(
+              leading: Icon(Icons.add_photo_alternate_outlined),
+              title: Text("เครดิตผู้จัดทำ"),
             )
           ],
         ),
@@ -55,12 +76,12 @@ class _MainScreenState extends State<MainScreen> {
       body: pages[currentIndex].page,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
-        onTap: onIndexChanged,
+        onTap: onIndexChange,
         items: pages
             .map(
-              (page) => BottomNavigationBarItem(
-                icon: page.icon,
-                label: page.label,
+              (item) => BottomNavigationBarItem(
+                icon: item.icon,
+                label: item.label,
               ),
             )
             .toList(),

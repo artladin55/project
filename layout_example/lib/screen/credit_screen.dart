@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HistoryScreen extends StatefulWidget {
-  HistoryScreen({Key key}) : super(key: key);
+class CreditScreen extends StatefulWidget {
+  CreditScreen({Key key}) : super(key: key);
 
   @override
-  _HistoryScreenState createState() => _HistoryScreenState();
+  _CreditScreenState createState() => _CreditScreenState();
 }
 
-class _HistoryScreenState extends State<HistoryScreen> {
+class _CreditScreenState extends State<CreditScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
